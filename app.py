@@ -84,10 +84,8 @@ def main():
     col_main, col_relevant = st.columns([2, 1])
 
     with col_main:
-        # Thanh chat input cố định ở trên cùng
         question = st.chat_input("💭 Type your question here...", key="chat_input_top")
 
-        # Container cuộn cho lịch sử chat
         chat_container = st.container(height=500)
         with chat_container:
             for message in st.session_state.chat_history:
@@ -95,7 +93,6 @@ def main():
                     st.write(message["content"])
                 st.markdown("<br>", unsafe_allow_html=True)
 
-        # Xử lý câu hỏi khi người dùng nhập
         if question:
             st.session_state.chat_history.append({"role": "user", "content": question})
             with chat_container:
@@ -103,8 +100,16 @@ def main():
                     st.write(question)
 
             relevant_docs = st.session_state.retriever.invoke(question)
-            st.session_state.relevant_docs = list(set(relevant_docs))
-            context = "\n".join([doc.page_content for doc in relevant_docs])
+
+            seen = set()
+            unique_docs = []
+            for doc in relevant_docs:
+                if doc.page_content not in seen:
+                    seen.add(doc.page_content)
+                    unique_docs.append(doc)
+
+            st.session_state.relevant_docs = unique_docs
+            context = "\n".join([doc.page_content for doc in unique_docs])
 
             recent_messages = st.session_state.chat_history[-5:]
             answer = st.session_state.rag.llm(messages=recent_messages, context=context)
