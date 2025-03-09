@@ -5,8 +5,7 @@ sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 import streamlit as st
 from rag.vectordb import VectorDB
 from rag.rag import RAG
-import shutil
-import os
+import hashlib
 
 from util.util import extract_text_from_pdf, chunk_text, convert_to_documents
 
@@ -49,25 +48,21 @@ def main():
     # 🔄 Process PDFs when the button is clicked
     if process_button and uploaded_files:
         with st.spinner('⚙️ Extracting & Analyzing PDFs...'):
-            all_chunks = set()  
+            all_chunks = {}  # Thay đổi từ set sang dict để lưu trữ chunk và ID
 
             for pdf_file in uploaded_files:
                 text = extract_text_from_pdf(pdf_file)
                 chunks = chunk_text(text)
 
-                unique_chunks = [chunk for chunk in chunks if chunk not in all_chunks]
-                all_chunks.update(unique_chunks)  
+                # Lọc các chunk trùng lặp dựa trên nội dung
+                for chunk in chunks:
+                    chunk_id = hashlib.md5(chunk.encode()).hexdigest()
+                    if chunk_id not in all_chunks:
+                        all_chunks[chunk_id] = chunk
 
-                st.session_state.pdf_chunks.append({
-                    'filename': pdf_file.name,
-                    'chunks': unique_chunks
-                })
+            # Chuyển đổi các chunk không trùng lặp thành documents
+            doc_chunks = convert_to_documents(list(all_chunks.values()))
 
-            doc_chunks = convert_to_documents(list(all_chunks))  
-            
-            if os.path.exists("./chroma_db"):
-                shutil.rmtree("./chroma_db")
-                
             st.session_state.vector_db = VectorDB(doc_chunks)
             st.session_state.retriever = st.session_state.vector_db.get_retriever()
 
