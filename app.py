@@ -103,8 +103,8 @@ def main():
                     st.write(question)
 
             relevant_docs = st.session_state.retriever.invoke(question)
-            st.session_state.relevant_docs = relevant_docs
-            context = " ".join([doc.page_content for doc in relevant_docs])
+            st.session_state.relevant_docs = list(set(relevant_docs))
+            context = "\n".join([doc.page_content for doc in relevant_docs])
 
             recent_messages = st.session_state.chat_history[-5:]
             answer = st.session_state.rag.llm(messages=recent_messages, context=context)
