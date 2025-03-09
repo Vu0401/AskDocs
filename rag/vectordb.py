@@ -13,7 +13,7 @@ class VectorDB:
         
         self.printer.print(f"Initializing VectorDB with {len(chunks)} chunks", "cyan")
         
-        self.embedding = HuggingFaceEmbeddings(model_name="BAAI/bge-small-en-v1.5")
+        self.embedding = HuggingFaceEmbeddings(model_name="BAAI/bge-m3")
         
         # Kiểm tra lỗi tenant database
         try:
