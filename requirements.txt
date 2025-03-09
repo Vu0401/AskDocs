@@ -4,4 +4,5 @@ PyPDF2
 streamlit
 torch==2.2.1
 langchain_community
+pysqlite3-binary
 vswarm @ git+https://github.com/Vu0401/vswarm.git
