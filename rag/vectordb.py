@@ -40,7 +40,7 @@ class VectorDB:
             chunks,
             embedding=self.embedding,
             persist_directory=self.persist_directory,
-            ids=ids  #
+            ids=ids
         )
         vector_db.persist() 
         
