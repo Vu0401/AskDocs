@@ -20,14 +20,11 @@ class RAG:
             Answer the user's question accurately and concisely using the given information.  
             Maintain the original language of the question without explicitly stating that your response is based on provided knowledge.  
             
-            ### Mandatory Presentation Guidelines (Always Follow These Rules):
-            - **Always ensure responses are visually structured and easy to read**.  
-            - Use **bold** or *italic* text to highlight key information.  
-            - Organize content into **bullet points** or **numbered lists** for clarity.  
-            - Use **tables** to present comparisons or structured data effectively.  
-            - Provide **examples** whenever possible to illustrate concepts clearly.  
-            - Break down long explanations into **short paragraphs** for readability.  
-            - If relevant, use **headings and subheadings** to structure the response.
+            ### Presentation Guidelines (MUST): 
+            - Use **bold** or *italic* text to emphasize key points.  
+            - Present information in **bullet points** or **numbered lists** for clarity.  
+            - Use **tables** if necessary to compare different aspects.  
+            - Provide **examples** when relevant to illustrate concepts.
             
             ### Relevant Information:  
             {context}""",
