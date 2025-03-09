@@ -5,6 +5,9 @@ sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 import streamlit as st
 from rag.vectordb import VectorDB
 from rag.rag import RAG
+import shutil
+import os
+
 from util.util import extract_text_from_pdf, chunk_text, convert_to_documents
 
 # 🎯 Function to initialize session state
@@ -62,6 +65,9 @@ def main():
 
             doc_chunks = convert_to_documents(list(all_chunks))  
             
+            if os.path.exists("./chroma_db"):
+                shutil.rmtree("./chroma_db")
+                
             st.session_state.vector_db = VectorDB(doc_chunks)
             st.session_state.retriever = st.session_state.vector_db.get_retriever()
 
