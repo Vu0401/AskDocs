@@ -46,19 +46,22 @@ def main():
     # 🔄 Process PDFs when the button is clicked
     if process_button and uploaded_files:
         with st.spinner('⚙️ Extracting & Analyzing PDFs...'):
-            all_chunks = []
+            all_chunks = set()  
+
             for pdf_file in uploaded_files:
                 text = extract_text_from_pdf(pdf_file)
                 chunks = chunk_text(text)
-                all_chunks.extend(chunks)
+
+                unique_chunks = [chunk for chunk in chunks if chunk not in all_chunks]
+                all_chunks.update(unique_chunks)  
+
                 st.session_state.pdf_chunks.append({
                     'filename': pdf_file.name,
-                    'chunks': chunks
+                    'chunks': unique_chunks
                 })
 
-            doc_chunks = convert_to_documents(all_chunks)
+            doc_chunks = convert_to_documents(list(all_chunks))  
             
-            # Re-initialize VectorDB from scratch with all chunks
             st.session_state.vector_db = VectorDB(doc_chunks)
             st.session_state.retriever = st.session_state.vector_db.get_retriever()
 
