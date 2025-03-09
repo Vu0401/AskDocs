@@ -15,12 +15,11 @@ class VectorDB:
         
         self.embedding = HuggingFaceEmbeddings(model_name="BAAI/bge-small-en-v1.5")
         
-        # Kiểm tra lỗi tenant database
         try:
             self.vector_db = self._create_vectordb(chunks)
         except ValueError as e:
             if "Could not connect to tenant" in str(e):
-                self.printer.print("⚠ Database bị lỗi! Đang xóa và tạo lại...", "red")
+                self.printer.print("⚠ Database error! Resetting and recreating...", "red")
                 self._reset_database()
                 self.vector_db = self._create_vectordb(chunks)
             else:
@@ -33,24 +32,23 @@ class VectorDB:
         start_time = time.time()
         self.printer.print("Creating vector database...", "yellow")
         
-        # Khởi tạo database với persist_directory
         vector_db = Chroma.from_documents(
             chunks, 
             embedding=self.embedding, 
             persist_directory=self.persist_directory
         )
-        vector_db.persist()  # Lưu database
+        vector_db.persist()  # Save the database
         
         elapsed_time = time.time() - start_time
-        self.printer.print(f"✅ Vector database created successfully in {elapsed_time:.2f} seconds", "bold_green")
+        self.printer.print(f"✅ Vector database successfully created in {elapsed_time:.2f} seconds", "bold_green")
         
         return vector_db
 
     def _reset_database(self):
-        """Xóa database cũ nếu có lỗi và tạo lại từ đầu."""
+        """Delete the old database if there are errors and recreate it."""
         if os.path.exists(self.persist_directory):
             shutil.rmtree(self.persist_directory)
-            self.printer.print("🗑 Đã xóa database cũ!", "yellow")
+            self.printer.print("🗑 Old database deleted!", "yellow")
 
     def get_retriever(self, search_type: str = "similarity", search_kwargs: dict = {"k": 20}):
         self.printer.print(f"Getting retriever with search_type={search_type}, search_kwargs={search_kwargs}", "cyan")
