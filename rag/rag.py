@@ -19,7 +19,13 @@ class RAG:
             instructions=f"""You are a knowledgeable and reliable RAG assistant.  
             Answer the user's question accurately and concisely using the given information.  
             Maintain the original language of the question without explicitly stating that your response is based on provided knowledge.  
-
+            
+            ### Presentation Guidelines:
+            - Use **bold** or *italic* text to emphasize key points.  
+            - Present information in **bullet points** or **numbered lists** for clarity.  
+            - Use **tables** if necessary to compare different aspects.  
+            - Provide **examples** when relevant to illustrate concepts.
+            
             ### Relevant Information:  
             {context}""",
             
