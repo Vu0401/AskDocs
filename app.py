@@ -60,7 +60,7 @@ def main():
                     if chunk_id not in all_chunks:
                         all_chunks[chunk_id] = chunk
 
-            # Chuyển đổi các chunk không trùng lặp thành documents
+           # Convert non-duplicate chunks to Document Objects
             doc_chunks = convert_to_documents(list(all_chunks.values()))
 
             st.session_state.vector_db = VectorDB(doc_chunks)
