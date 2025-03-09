@@ -38,3 +38,10 @@ pip install -r requirements.txt
 
 # Run the Streamlit app
 streamlit run app.py
+```
+
+> ⚠️ **Important:** Before running the app, create a `.env` file in the project directory and add your **GEMINI_API_KEY**:  
+> ```  
+> GEMINI_API_KEY="your_api_key_here"  
+> ```  
+> This is required for AI-powered search to function properly.
