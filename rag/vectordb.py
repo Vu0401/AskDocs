@@ -33,16 +33,16 @@ class VectorDB:
         start_time = time.time()
         self.printer.print("Creating vector database...", "yellow")
         
-        # Tạo IDs duy nhất cho từng chunk dựa trên nội dung
+        # Generate unique IDs for each chunk based on content
         ids = [hashlib.md5(chunk.page_content.encode()).hexdigest() for chunk in chunks]
         
         vector_db = Chroma.from_documents(
             chunks,
             embedding=self.embedding,
             persist_directory=self.persist_directory,
-            ids=ids  # Thêm IDs vào đây
+            ids=ids  #
         )
-        vector_db.persist()  # Lưu database
+        vector_db.persist() 
         
         elapsed_time = time.time() - start_time
         self.printer.print(f"✅ Vector database successfully created in {elapsed_time:.2f} seconds", "bold_green")
