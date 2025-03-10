@@ -165,7 +165,7 @@ def main():
         st.markdown(
             """
             <h3 style='color: #E0E0E0; display: flex; align-items: center;'>
-                <span style='margin-right: 8px;'>🔍</span> Relevant Documents
+                <span style='margin-right: 6px;'>🔍</span> Relevant Documents
             </h3>
             """,
             unsafe_allow_html=True
