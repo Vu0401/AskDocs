@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/askdocs.jpg" alt="AskDocs Logo" width="150">
+  <img src="assets/askdocs.jpg" alt="AskDocs Logo" width="300">
 </p>
 
 # 📄🤖 AskDocs – AI-Powered RAG System for Document Q&A  
