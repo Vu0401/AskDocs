@@ -1,8 +1,10 @@
+# 🤖📄 AskDocs – AI-Powered RAG System for Document Q&A  
+
+
 <p align="center">
   <img src="assets/askdocs.jpg" alt="AskDocs Logo" width="300">
 </p>
 
-# 📄🤖 AskDocs – AI-Powered RAG System for Document Q&A  
 
 **AskDocs** is an advanced Retrieval-Augmented Generation (RAG) system designed to make document search and question-answering effortless. Simply upload PDFs, ask questions, and get AI-powered answers with relevant document excerpts displayed side by side.  
 
