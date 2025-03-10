@@ -36,7 +36,14 @@ def main():
 
     # 🎯 Sidebar for PDF upload (LEFT SIDEBAR)
     with st.sidebar:
-        st.sidebar.title("🔍 AskDocs")
+        st.markdown(
+            """
+            <p style="text-align: center;">
+                <img src="assets/askdocs.jpg" alt="AskDocs Logo" width="120">
+            </p>
+            """,
+            unsafe_allow_html=True
+        )
         st.header("📂 Upload Your PDFs")
         uploaded_files = st.file_uploader(
             "📤 Drag & Drop or Select PDF Files",
