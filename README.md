@@ -1,4 +1,4 @@
-# 📄🤖 AskDocs – AI-Powered RAG System for Document Q&A  
+# ![AskDocs Logo](assets/askdocs.jpg) 📄🤖 AskDocs – AI-Powered RAG System for Document Q&A  
 
 **AskDocs** is an advanced Retrieval-Augmented Generation (RAG) system designed to make document search and question-answering effortless. Simply upload PDFs, ask questions, and get AI-powered answers with relevant document excerpts displayed side by side.  
 
@@ -22,7 +22,7 @@
 - **Python** (Core engine)  
 - **Streamlit** (Interactive UI)  
 - **LangChain + ChromaDB** (Vector-based document retrieval)  
-- **Hugging Face Embeddings** (Semantic search & intelligent responses)  
+- **Hugging Face Embeddings** (Semantic search & intelligent responses)
 
 ## 🛠️ Local Installation  
 
