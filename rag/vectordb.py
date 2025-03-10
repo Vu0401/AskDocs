@@ -11,9 +11,9 @@ class VectorDB:
         self.printer = Printer()
         self.persist_directory = persist_directory
         
-        # Check if the database directory exists, if so, delete it
+        # Check if the database directory exists, if so, clear its contents
         if os.path.exists(self.persist_directory):
-            self._reset_database()
+            self._clear_database()
         
         start_time = time.time()
         self.printer.print(f"Initializing VectorDB with {len(chunks)} chunks", "cyan")
@@ -25,7 +25,7 @@ class VectorDB:
         except ValueError as e:
             if "Could not connect to tenant" in str(e):
                 self.printer.print("⚠ Database error! Resetting and recreating...", "red")
-                self._reset_database()
+                self._clear_database()
                 self.vector_db = self._create_vectordb(chunks)
             else:
                 raise e
@@ -54,11 +54,18 @@ class VectorDB:
         
         return vector_db
 
-    def _reset_database(self):
-        """Deletes the existing database directory and resets it."""
-        if os.path.exists(self.persist_directory):
-            shutil.rmtree(self.persist_directory)
-            self.printer.print("🗑 Old database deleted!", "yellow")
+    def _clear_database(self):
+        """Removes all files inside the database directory while keeping the folder."""
+        for filename in os.listdir(self.persist_directory):
+            file_path = os.path.join(self.persist_directory, filename)
+            try:
+                if os.path.isfile(file_path) or os.path.islink(file_path):
+                    os.unlink(file_path)  # Remove files and symbolic links
+                elif os.path.isdir(file_path):
+                    shutil.rmtree(file_path)  # Remove subdirectories
+            except Exception as e:
+                self.printer.print(f"⚠ Error clearing database folder: {e}", "red")
+        self.printer.print("🗑 Database folder cleared!", "yellow")
 
     def get_retriever(self, search_type: str = "similarity", search_kwargs: dict = {"k": 20}, similarity_threshold: float = 0.8):
         """
