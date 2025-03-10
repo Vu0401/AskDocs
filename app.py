@@ -55,14 +55,8 @@ def main():
                 f"""
                 <div style="text-align: center;">
                     <img src="data:image/jpeg;base64,{img_str}" alt="AskDocs Logo" width="300" 
-                    style="filter: drop-shadow(0 0 10px rgba(255, 20, 147, 0.8)); animation: glow 2s infinite alternate;">
+                    style="filter: drop-shadow(0 0 10px rgba(255, 20, 147, 0.8));">
                 </div>
-                <style>
-                    @keyframes glow {{
-                        0% {{ filter: drop-shadow(0 0 5px rgba(255, 20, 147, 0.5)); }}
-                        100% {{ filter: drop-shadow(0 0 15px rgba(255, 20, 147, 0.9)); }}
-                    }}
-                </style>
                 """,
                 unsafe_allow_html=True
             )
