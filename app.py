@@ -1,6 +1,3 @@
-# Workaround to ensure compatibility with SQLite
-__import__('pysqlite3')
-sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 
 import streamlit as st
 import hashlib
@@ -8,10 +5,16 @@ import base64
 import os
 from pathlib import Path
 from PIL import Image
+import sys
 
 from rag.rag import RAG
 from rag.vectordb import VectorDB
 from util.util import extract_text_from_pdf, chunk_text, convert_to_documents
+
+# Workaround to ensure compatibility with SQLite
+__import__('pysqlite3')
+sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
+
 
 def get_image_as_base64(image_path):
     """Load and encode an image as base64 for displaying."""
