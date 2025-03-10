@@ -38,9 +38,9 @@ def main():
     with st.sidebar:
         st.markdown(
             """
-            <p style="text-align: center;">
-                <img src="assets/askdocs.jpg" alt="AskDocs Logo" width="120">
-            </p>
+            <div style="text-align: center;">
+                <img src="assets/askdocs.jpg" alt="AskDocs Logo" width="100">
+            </div>
             """,
             unsafe_allow_html=True
         )
