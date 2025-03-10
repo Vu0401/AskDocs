@@ -8,15 +8,6 @@ from rag.rag import RAG
 import hashlib
 from util.util import extract_text_from_pdf, chunk_text, convert_to_documents
 
-def img_to_base64(image_path):
-    """Convert image to base64."""
-    try:
-        with open(image_path, "rb") as img_file:
-            return base64.b64encode(img_file.read()).decode()
-    except Exception as e:
-        print("Error: ", e)
-        return None
-
 # 🎯 Function to initialize session state
 def initialize_session_state():
     """Initialize session state variables."""
@@ -44,18 +35,14 @@ def main():
 
     # 🎯 Sidebar for PDF upload (LEFT SIDEBAR)
     with st.sidebar:
-        img_path = "assets/askdocs.jpg" 
-        img_base64 = img_to_base64(img_path)
-        if img_base64:
-            st.markdown(
-                f"""
-                <div style="text-align: center; margin-bottom: 10px;">
-                    <img src="data:image/png;base64,{img_base64}" width="100" style="border-radius: 10px; box-shadow: 0px 0px 10px rgba(80, 200, 120, 0.8);">
-                </div>
-                """,
-                unsafe_allow_html=True,
-            )
-    
+        st.markdown(
+            """
+            <div style="text-align: center;">
+                <img src="assets/askdocs.jpg" alt="AskDocs Logo" width="100">
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
         st.header("📂 Upload Your PDFs")
         uploaded_files = st.file_uploader(
             "📤 Drag & Drop or Select PDF Files",
