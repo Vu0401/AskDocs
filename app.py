@@ -47,9 +47,10 @@ def get_file_hash(file_content):
     return hashlib.md5(file_content).hexdigest()
 
 
+
 def main():
     """Main function to run the Streamlit application."""
-    st.set_page_config(page_title="AskDocs", page_icon="🚀", layout="wide")
+    st.set_page_config(page_title="AskDocs", page_icon="askdocs.jpg", layout="wide")
     initialize_session_state()
 
     # Sidebar for file upload
@@ -68,7 +69,10 @@ def main():
                 unsafe_allow_html=True
             )
         else:
-            st.markdown("""<div style="text-align: center; font-size: 24px; font-weight: bold; margin-bottom: 20px;">AskDocs</div>""", unsafe_allow_html=True)
+            st.markdown(
+                """<div style="text-align: center; font-size: 24px; font-weight: bold; margin-bottom: 20px;">AskDocs</div>""", 
+                unsafe_allow_html=True
+            )
         
         st.header("📂 Upload Your PDFs")
         uploaded_files = st.file_uploader("📤 Drag & Drop or Select PDF Files", type=['pdf'], accept_multiple_files=True)
