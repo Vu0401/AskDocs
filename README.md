@@ -1,4 +1,4 @@
-# 🤖📄 AskDocs – AI-Powered RAG System for Document Q&A  
+# 🤖 AskDocs – AI-Powered RAG System for Document Q&A  
 
 <p align="center">
   <img src="assets/askdocs.jpg" alt="AskDocs Logo" width="300">
