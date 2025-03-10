@@ -35,14 +35,43 @@ def main():
 
     # 🎯 Sidebar for PDF upload (LEFT SIDEBAR)
     with st.sidebar:
-        st.markdown(
-            """
-            <div style="text-align: center;">
-                <img src="assets/askdocs.jpg" alt="AskDocs Logo" width="100">
-            </div>
-            """,
-            unsafe_allow_html=True
-        )
+        # Fix for logo display using base64 encoding
+        from pathlib import Path
+        import base64
+        import os
+    
+        # Function to load and display the image
+        def get_image_as_base64(image_path):
+            if os.path.exists(image_path):
+                with open(image_path, "rb") as img_file:
+                    return base64.b64encode(img_file.read()).decode()
+            return None
+    
+        # Path to your logo
+        logo_path = os.path.join("assets", "askdocs.jpg")
+        
+        # Display logo
+        img_str = get_image_as_base64(logo_path)
+        if img_str:
+            st.markdown(
+                f"""
+                <div style="text-align: center;">
+                    <img src="data:image/jpeg;base64,{img_str}" alt="AskDocs Logo" width="100">
+                </div>
+                """,
+                unsafe_allow_html=True
+            )
+        else:
+            # Fallback text if image is not found
+            st.markdown(
+                """
+                <div style="text-align: center; font-size: 24px; font-weight: bold; margin-bottom: 20px;">
+                    AskDocs
+                </div>
+                """,
+                unsafe_allow_html=True
+            )
+            
         st.header("📂 Upload Your PDFs")
         uploaded_files = st.file_uploader(
             "📤 Drag & Drop or Select PDF Files",
