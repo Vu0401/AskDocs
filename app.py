@@ -55,11 +55,16 @@ def main():
                 f"""
                 <div style="text-align: center;">
                     <img src="data:image/jpeg;base64,{img_str}" alt="AskDocs Logo" width="300" 
-                    style="border-radius: 20px; border: 5px solid rgba(255, 20, 147, 0.8);">
+                    style="
+                        border-radius: 20px; 
+                        border: 6px solid #D80070; 
+                        box-shadow: 0px 0px 15px rgba(216, 0, 112, 0.8); 
+                    ">
                 </div>
                 """,
                 unsafe_allow_html=True
             )
+
 
         else:
             # Fallback text if image is not found
