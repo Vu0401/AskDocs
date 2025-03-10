@@ -1,4 +1,4 @@
-<p align="left">
+<p align="center">
   <img src="assets/askdocs.jpg" alt="AskDocs Logo" width="150">
 </p>
 
