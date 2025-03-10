@@ -7,7 +7,7 @@
 
 **AskDocs** is an advanced Retrieval-Augmented Generation (RAG) system designed to make document search and question-answering effortless. Simply upload PDFs, ask questions, and get AI-powered answers with relevant document excerpts displayed side by side.  
 
-🔗 **Live Demo:** [askdocs](https://askdocs-chat.streamlit.app)  
+🔗 **Live Demo:** [askdocs](https://askdocs-bot.streamlit.app)  
 
 ## ✨ Key Features  
 - 📂 **Upload & Search Instantly** – Drag and drop PDFs for quick processing.  
