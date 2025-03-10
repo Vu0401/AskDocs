@@ -51,9 +51,15 @@ def main():
     # Path to your logo
     logo_path = os.path.join("assets", "askdocs.jpg")
     img_str = get_image_as_base64(logo_path)
-        
-    # Configure the Streamlit page
-    st.set_page_config(page_title="AskDocs", page_icon=img_str, layout="wide")
+
+    # Configure the Streamlit page with the base64 image as page_icon
+    if img_str:
+        # Create a data URL for the favicon
+        favicon = f"data:image/jpeg;base64,{img_str}"
+        st.set_page_config(page_title="AskDocs", page_icon=favicon, layout="wide")
+    else:
+        # Fallback to emoji if image can't be loaded
+        st.set_page_config(page_title="AskDocs", page_icon="📄", layout="wide")
 
     # Initialize session state variables
     initialize_session_state()
