@@ -54,10 +54,36 @@ def main():
 
     # Sidebar for file upload
     with st.sidebar:
-        # Load and display the application logo
+        # Path to your logo
         logo_path = os.path.join("assets", "askdocs.jpg")
         img_str = get_image_as_base64(logo_path)
         
+        if img_str:
+            st.markdown(
+                f"""
+                <div style="text-align: center;">
+                    <img src="data:image/jpeg;base64,{img_str}" alt="AskDocs Logo" width="300" 
+                    style="
+                        border-radius: 20px; 
+                        border: 6px solid #D80070; 
+                        box-shadow: 0px 0px 15px rgba(216, 0, 112, 0.8); 
+                    ">
+                </div>
+                """,
+                unsafe_allow_html=True
+            )
+
+
+        else:
+            st.markdown(
+                """
+                <div style="text-align: center; font-size: 24px; font-weight: bold; margin-bottom: 20px;">
+                    AskDocs
+                </div>
+                """,
+                unsafe_allow_html=True
+            )
+            
         st.header("📂 Upload Your PDFs")
         uploaded_files = st.file_uploader(
             "📤 Drag & Drop or Select PDF Files",
