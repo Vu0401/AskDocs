@@ -11,9 +11,10 @@ class VectorDB:
         self.printer = Printer()
         self.persist_directory = persist_directory
         
-        # Make sure the directory exists
+        # Ensure the directory exists
         if not os.path.exists(self.persist_directory):
             os.makedirs(self.persist_directory)
+            self.printer.print(f"Created directory: {self.persist_directory}", "yellow")
         elif os.path.exists(self.persist_directory):
             self._clear_database()
         
@@ -24,13 +25,16 @@ class VectorDB:
         
         try:
             self.vector_db = self._create_vectordb(chunks)
-        except ValueError as e:
-            if "Could not connect to tenant" in str(e):
-                self.printer.print("⚠ Database error! Resetting and recreating...", "red")
-                self._clear_database()
-                self.vector_db = self._create_vectordb(chunks)
-            else:
-                raise e
+        except Exception as e:
+            self.printer.print(f"⚠ Database error: {str(e)}", "red")
+            self.printer.print("⚠ Resetting and recreating database...", "red")
+            self._clear_database()
+            # Create a fresh directory to ensure no corrupted files remain
+            if os.path.exists(self.persist_directory):
+                shutil.rmtree(self.persist_directory)
+            os.makedirs(self.persist_directory)
+            # Try again with fresh directory
+            self.vector_db = self._create_vectordb(chunks)
         
         elapsed_time = time.time() - start_time
         self.printer.print(f"Total initialization time: {elapsed_time:.2f} seconds", "bold_cyan")
@@ -43,10 +47,12 @@ class VectorDB:
         # Generate unique IDs for each chunk based on its content
         ids = [hashlib.md5(chunk.page_content.encode()).hexdigest() for chunk in chunks]
         
+        # Create the vector DB with explicit collection name
         vector_db = Chroma.from_documents(
             chunks,
             embedding=self.embedding,
             persist_directory=self.persist_directory,
+            collection_name="document_collection",  # Explicitly name the collection
             ids=ids
         )
         vector_db.persist()
@@ -58,6 +64,7 @@ class VectorDB:
 
     def _clear_database(self):
         """Removes all files inside the database directory while keeping the folder."""
+        self.printer.print("Clearing database folder...", "yellow")
         for filename in os.listdir(self.persist_directory):
             file_path = os.path.join(self.persist_directory, filename)
             try:
