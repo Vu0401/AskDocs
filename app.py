@@ -105,7 +105,8 @@ def main():
     if st.button("🛠 Process PDFs") and uploaded_files:
         with st.spinner('⚙️ Extracting & Analyzing PDFs...'):
             new_files, duplicates = process_uploaded_files(uploaded_files)
-        display_processing_status(new_files, duplicates)
+            
+    display_processing_status(new_files, duplicates)
 
     if not st.session_state.retriever:
         st.warning("📌 Please upload and process PDFs before asking questions.")
