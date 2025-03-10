@@ -1,8 +1,8 @@
 # 🤖📄 AskDocs – AI-Powered RAG System for Document Q&A  
 
-
 <p align="center">
-  <img src="assets/askdocs.jpg" alt="AskDocs Logo" width="300">
+  <img src="assets/askdocs.jpg" alt="AskDocs Logo" width="300" 
+       style="border-radius: 15px; box-shadow: 0px 0px 15px rgba(80, 200, 120, 0.8);">
 </p>
 
 
