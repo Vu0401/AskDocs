@@ -55,7 +55,7 @@ def main():
                 f"""
                 <div style="text-align: center;">
                     <img src="data:image/jpeg;base64,{img_str}" alt="AskDocs Logo" width="300" 
-                    style="filter: drop-shadow(0 0 10px rgba(255, 20, 147, 0.8));">
+                    style="border-radius: 20px; border: 5px solid rgba(255, 20, 147, 0.8);">
                 </div>
                 """,
                 unsafe_allow_html=True
