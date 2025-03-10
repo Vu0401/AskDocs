@@ -11,8 +11,10 @@ class VectorDB:
         self.printer = Printer()
         self.persist_directory = persist_directory
         
-        # Check if the database directory exists, if so, clear its contents
-        if os.path.exists(self.persist_directory):
+        # Make sure the directory exists
+        if not os.path.exists(self.persist_directory):
+            os.makedirs(self.persist_directory)
+        elif os.path.exists(self.persist_directory):
             self._clear_database()
         
         start_time = time.time()
