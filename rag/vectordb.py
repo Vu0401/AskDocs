@@ -10,8 +10,12 @@ class VectorDB:
     def __init__(self, chunks, persist_directory="./chroma_db"):
         self.printer = Printer()
         self.persist_directory = persist_directory
-        start_time = time.time()
         
+        # Check if the database directory exists, if so, delete it
+        if os.path.exists(self.persist_directory):
+            self._reset_database()
+        
+        start_time = time.time()
         self.printer.print(f"Initializing VectorDB with {len(chunks)} chunks", "cyan")
         
         self.embedding = HuggingFaceEmbeddings(model_name="BAAI/bge-small-en-v1.5")
