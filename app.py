@@ -3,10 +3,21 @@ import sys
 sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 
 import streamlit as st
-from rag.vectordb import VectorDB
-from rag.rag import RAG
 import hashlib
+from pathlib import Path
+import base64
+import os
+
+from rag.rag import RAG
+from rag.vectordb import VectorDB
 from util.util import extract_text_from_pdf, chunk_text, convert_to_documents
+
+ # Function to load and display the image
+def get_image_as_base64(image_path):
+    if os.path.exists(image_path):
+        with open(image_path, "rb") as img_file:
+            return base64.b64encode(img_file.read()).decode()
+    return None
 
 # 🎯 Function to initialize session state
 def initialize_session_state():
@@ -35,28 +46,15 @@ def main():
 
     # 🎯 Sidebar for PDF upload (LEFT SIDEBAR)
     with st.sidebar:
-        # Fix for logo display using base64 encoding
-        from pathlib import Path
-        import base64
-        import os
-    
-        # Function to load and display the image
-        def get_image_as_base64(image_path):
-            if os.path.exists(image_path):
-                with open(image_path, "rb") as img_file:
-                    return base64.b64encode(img_file.read()).decode()
-            return None
-    
         # Path to your logo
         logo_path = os.path.join("assets", "askdocs.jpg")
-        
-        # Display logo
         img_str = get_image_as_base64(logo_path)
+        
         if img_str:
             st.markdown(
                 f"""
                 <div style="text-align: center;">
-                    <img src="data:image/jpeg;base64,{img_str}" alt="AskDocs Logo" width="100">
+                    <img src="data:image/jpeg;base64,{img_str}" alt="AskDocs Logo" width="300">
                 </div>
                 """,
                 unsafe_allow_html=True
