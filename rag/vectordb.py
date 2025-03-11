@@ -5,6 +5,11 @@ import time
 import shutil
 import os
 import hashlib
+import sys
+
+# Workaround to ensure compatibility with SQLite
+__import__('pysqlite3')
+sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 
 class VectorDB:
     def __init__(self, chunks=None, persist_directory="./chroma_db"):
