@@ -13,7 +13,7 @@
 ## 📌 AskDocs Pipeline
 
 <p align="center">
-  <img src="assets/pipeline.png" alt="AskDocs Pipeline" width="1000">
+  <img src="assets/pineline.png" alt="AskDocs Pipeline" width="2000">
 </p>
 
 ---
