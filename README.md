@@ -12,7 +12,9 @@
 
 ## AskDocs Pineline
 
-![Uploading {70E77AC5-5048-4D4D-A23D-B525B6A7446A}.png…]()
+<p align="center">
+  <img src="assets/pipeline.png" alt="AskDocs Logo" width="500">
+</p>
 
 
 ## ✨ Key Features  
