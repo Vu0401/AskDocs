@@ -9,6 +9,12 @@
 
 🔗 **Live Demo:** [AskDocs](https://askdocs-bot.streamlit.app)  
 
+
+## AskDocs Pineline
+
+![Uploading {70E77AC5-5048-4D4D-A23D-B525B6A7446A}.png…]()
+
+
 ## ✨ Key Features  
 - 📂 **Upload & Search Instantly** – Drag and drop PDFs for quick processing.  
 - 🧠 **AI-Enhanced Q&A** – Ask anything, and our intelligent model retrieves the most relevant answers.  
