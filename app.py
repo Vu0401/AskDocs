@@ -1,7 +1,3 @@
-import sys
-# Workaround to ensure compatibility with SQLite
-__import__('pysqlite3')
-sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 
 import streamlit as st
 import hashlib
@@ -9,7 +5,10 @@ import base64
 import os
 from pathlib import Path
 from PIL import Image
-
+import sys
+# Workaround to ensure compatibility with SQLite
+__import__('pysqlite3')
+sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 
 from rag.rag import RAG
 from rag.vectordb import VectorDB
