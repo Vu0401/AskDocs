@@ -8,9 +8,7 @@ import hashlib
 
 class VectorDB:
     def __init__(self, chunks=None, persist_directory="./chroma_db"):
-        if os.path.exists(persist_directory):
-            self.printer.print("🗑 Removing old vector database...", "yellow")
-            shutil.rmtree(persist_directory)
+
             
         self.printer = Printer()
         self.persist_directory = persist_directory
