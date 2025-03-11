@@ -1,41 +1,24 @@
-# AskDocs – AI-Powered RAG System for Document Q&A  
+# AskDocs – Basic RAG for Document Q&A
 
-<p align="center">
-  <img src="assets/askdocs.jpg" alt="AskDocs Logo" width="300">
-</p>
-
-
-**AskDocs** is an advanced Retrieval-Augmented Generation (RAG) system designed to make document search and question-answering effortless. Simply upload PDFs, ask questions, and get AI-powered answers with relevant document excerpts displayed side by side.  
-
-🔗 **Live Demo:** [AskDocs](https://askdocs-bot.streamlit.app)  
-
-
-## AskDocs Pineline
-
-<p align="center">
-  <img src="assets/pipeline.png" alt="AskDocs Logo" width="2000">
-</p>
-
+**AskDocs** is a simple **Retrieval-Augmented Generation (RAG)** system designed for document-based question answering. Users can upload a PDF, ask questions, and receive AI-generated answers along with relevant document excerpts.
 
 ## ✨ Key Features  
-- 📂 **Upload & Search Instantly** – Drag and drop PDFs for quick processing.  
-- 🧠 **AI-Enhanced Q&A** – Ask anything, and our intelligent model retrieves the most relevant answers.  
-- 🔍 **Context-Aware Search** – Displays the most relevant document sections alongside the AI-generated response.  
-- 📝 **Smart Summarization** – Extracts key insights for a concise, easy-to-read summary.  
-- 📌 **Conversation History** – Keeps track of previous queries for seamless research.  
-- 🎨 **User-Friendly Interface** – Clean, intuitive UI built with Streamlit.  
+- 📂 **Upload Documents** – Quickly process PDF files for search.  
+- 🔍 **Information Retrieval** – Extracts relevant sections based on user queries.  
+- 🧠 **AI-Powered Q&A** – Uses embeddings to enhance search results.  
+- 🎨 **Minimal UI** – Built with Streamlit for a simple and interactive experience.  
 
 ## 🚀 How It Works  
 1. **Upload a PDF file.**  
-2. **Ask a question** about the document’s content.  
-3. Click **Search 🔍**, and the AI retrieves the best-matching response.  
-4. **View the answer** along with the most relevant document excerpts.  
+2. **Ask a question** related to the document.  
+3. **The system retrieves** the most relevant text chunks.  
+4. **View the answer** alongside supporting document excerpts.  
 
 ## 🔧 Technologies Used  
-- **Python** (Core engine)  
-- **Streamlit** (Interactive UI)  
-- **LangChain + ChromaDB** (Vector-based document retrieval)  
-- **Hugging Face Embeddings** (Semantic search & intelligent responses)
+- **Python** – Core engine  
+- **Streamlit** – User interface  
+- **LangChain + ChromaDB** – Vector-based retrieval  
+- **Hugging Face Embeddings** – Semantic search  
 
 ## 🛠️ Local Installation  
 
