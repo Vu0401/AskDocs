@@ -11,8 +11,13 @@ class VectorDB:
         self.printer = Printer()
         self.persist_directory = persist_directory
         self.embedding = HuggingFaceEmbeddings(model_name="BAAI/bge-small-en-v1.5")
-        
-        # Initialize vector_db
+
+        # If the old database directory exists, delete it before creating a new one.
+        if os.path.exists(self.persist_directory):
+            self.printer.print("🗑 Removing old vector database...", "yellow")
+            shutil.rmtree(self.persist_directory)
+
+        # init vector_db
         if chunks:
             start_time = time.time()
             self.printer.print(f"Initializing VectorDB with {len(chunks)} chunks", "cyan")
@@ -30,16 +35,8 @@ class VectorDB:
             elapsed_time = time.time() - start_time
             self.printer.print(f"Total initialization time: {elapsed_time:.2f} seconds", "bold_cyan")
         else:
-            # If no chunks provided, check if database exists
-            if os.path.isdir(self.persist_directory):
-                self.printer.print(f"Loading existing database from {self.persist_directory}", "cyan")
-                self.vector_db = Chroma(
-                    persist_directory=self.persist_directory,
-                    embedding_function=self.embedding
-                )
-            else:
-                self.printer.print("No chunks provided and no existing database found", "yellow")
-                self.vector_db = None
+            self.printer.print("No chunks provided. VectorDB will be empty.", "yellow")
+            self.vector_db = None
         
     def _create_vectordb(self, chunks):
         start_time = time.time()
