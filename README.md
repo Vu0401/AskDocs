@@ -1,24 +1,50 @@
 # AskDocs – Basic RAG for Document Q&A
 
-**AskDocs** is a simple **Retrieval-Augmented Generation (RAG)** system designed for document-based question answering. Users can upload a PDF, ask questions, and receive AI-generated answers along with relevant document excerpts.
+<p align="center">
+  <img src="assets/askdocs.jpg" alt="AskDocs Logo" width="300">
+</p>
+
+**AskDocs** is a lightweight **Retrieval-Augmented Generation (RAG)** system designed for document-based question answering. Users can upload PDF files, ask questions, and receive AI-generated answers along with relevant document excerpts.
+
+🔗 **Live Demo:** [AskDocs](https://askdocs-bot.streamlit.app)  
+
+---
+
+## 📌 AskDocs Pipeline
+
+<p align="center">
+  <img src="assets/pipeline.png" alt="AskDocs Pipeline" width="1000">
+</p>
+
+---
 
 ## ✨ Key Features  
-- 📂 **Upload Documents** – Quickly process PDF files for search.  
-- 🔍 **Information Retrieval** – Extracts relevant sections based on user queries.  
-- 🧠 **AI-Powered Q&A** – Uses embeddings to enhance search results.  
-- 🎨 **Minimal UI** – Built with Streamlit for a simple and interactive experience.  
+
+✅ **Upload & Process PDFs** – Quickly upload and analyze document content.  
+🔍 **Intelligent Retrieval** – Extracts the most relevant sections from documents.  
+🧠 **AI-Powered Q&A** – Uses embeddings to enhance search results.  
+📑 **Contextual Answers** – Displays document excerpts alongside AI responses.  
+🎨 **Minimal & Interactive UI** – Built with Streamlit for a seamless experience.  
+
+---
 
 ## 🚀 How It Works  
-1. **Upload a PDF file.**  
-2. **Ask a question** related to the document.  
-3. **The system retrieves** the most relevant text chunks.  
-4. **View the answer** alongside supporting document excerpts.  
+
+1️⃣ **Upload a PDF file.**  
+2️⃣ **Ask a question** related to the document.  
+3️⃣ **The system retrieves** the most relevant text sections.  
+4️⃣ **View AI-generated answers** alongside supporting document excerpts.  
+
+---
 
 ## 🔧 Technologies Used  
-- **Python** – Core engine  
-- **Streamlit** – User interface  
-- **LangChain + ChromaDB** – Vector-based retrieval  
-- **Hugging Face Embeddings** – Semantic search  
+
+- 🐍 **Python** – Core engine  
+- 🌐 **Streamlit** – User-friendly UI  
+- 📖 **LangChain + ChromaDB** – Vector-based retrieval system  
+- 🤖 **Hugging Face Embeddings** – Semantic search for intelligent responses  
+
+---
 
 ## 🛠️ Local Installation  
 
