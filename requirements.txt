@@ -1,5 +1,5 @@
 langchain-chroma>=0.1.2
-langchain_huggingface
+langchain_huggingface>=0.1.2
 PyPDF2
 streamlit
 torch==2.2.1
