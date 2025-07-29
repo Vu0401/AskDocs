@@ -1,0 +1,46 @@
+# Ignore environment files
+.venv
+.env
+.env.local
+.env.*.local
+
+# Ignore logs
+logs/
+logs/*.log
+logs/*.json
+
+# Ignore results
+results/
+results/*.csv
+
+# Ignore Python cache and compiled files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore output and evaluation results
+final_result.json
+evaluate/*.json
+
+# Ignore storage and database files
+chroma_db
+.chromadb
+
+storage/
+storage/chroma_db/
+storage/chroma_db/**/*.bin
+storage/chroma_db/chroma.sqlite3
+
+# Ignore test files
+test/
+
+# Ignore IDE/editor-specific files
+.vscode/
+.idea/
+*.iml
+
+# Ignore MacOS and Windows system files
+.DS_Store
+Thumbs.db
+ehthumbs.db
