@@ -2,7 +2,7 @@ from swarm import Swarm, Agent
 import os
 from dotenv import load_dotenv
 
-load_dotenv()
+load_dotenv(override=True)
 os.environ["GEMINI_API_KEY"] = os.getenv('GEMINI_API_KEY')
 
 class RAG:

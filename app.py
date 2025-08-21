@@ -34,7 +34,7 @@ def initialize_session_state():
     if 'retriever' not in st.session_state:
         st.session_state.retriever = None
     if 'rag' not in st.session_state:
-        st.session_state.rag = RAG(model="gemini/gemini-2.0-flash-thinking-exp-01-21", functions=[])
+        st.session_state.rag = RAG(model="gemini/gemini-2.0-flash", functions=[])
     if 'relevant_docs' not in st.session_state:
         st.session_state.relevant_docs = []
     if 'vector_db' not in st.session_state:
